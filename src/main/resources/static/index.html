@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script >
+        $(document).ready(function() {
+
+            $.ajax
+            (
+                {
+                    url: "http://localhost:8080/greeting",
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        var json = "<h4>Ajax Response</h4><pre>"
+                            + JSON.stringify(data, null, 4) + "</pre>";
+                        $('#demo').html(json);
+                         
+                        console.log("SUCCESS : ", data);
+
+                    },
+                    error: function (data) {
+                        alert("test");
+                    }
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+<div>
+    <p id="demo">The ID is </p>
+    <p class="greeting-content">The content is </p>
+</div>
+</body>
+</html>
